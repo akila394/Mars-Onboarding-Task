@@ -6,12 +6,15 @@ using TechTalk.SpecFlow;
 using OpenQA.Selenium.Support.UI;
 using static SpecflowPages.CommonMethods;
 using RelevantCodes.ExtentReports;
+using System.Collections.Generic;
 
 namespace SpecflowTests.AcceptanceTest
 {
     [Binding]
     public class AddSkills 
     {
+        List<string> skill = new List<string> { "C#", "Java", "Selenium" };
+        List<string> skillLevel = new List<string> { "Beginner", "Expert", "Expert" };
         [Given(@"I clicked on the Skills tab under Profile page")]
         public void GivenIClickedOnTheSkillsTabUnderProfilePage()
         {
@@ -29,31 +32,47 @@ namespace SpecflowTests.AcceptanceTest
             //Click on Skills button
             Driver.driver.FindElement(By.XPath("//form/div[1]/a[2]")).Click();
 
-            //Click on Add new skill button
-            Driver.driver.FindElement(By.XPath("//form/div[3]/div/div[2]/div/table/thead/tr/th/div")).Click();
+            foreach (string s in skill)
+            {
+                for(int i=0; i <= skillLevel.Count;i++)
+                {
+                    
+                    if (i == skill.IndexOf(s))
+                    {
+                        
+                        Thread.Sleep(1000);
+                        Console.WriteLine(skillLevel[i]);
 
-            //Add the Skill
-            Driver.driver.FindElement(By.XPath("//form/div[3]/div/div[2]/div/div/div/input")).SendKeys("C#");
+                        //Click on Add new skill button
+                        Driver.driver.FindElement(By.XPath("//div[@class='ui teal button']")).Click();
 
-            //Select Skill Level
-            SelectElement skillLevel = new SelectElement(Driver.driver.FindElement(By.XPath("//form/div[3]/div/div[2]/div/div/div[2]/select")));
-            skillLevel.SelectByValue("Intermediate");
+                        Console.WriteLine("-----------------");
 
-            //Click on Add button
-            Driver.driver.FindElement(By.XPath("//form/div[3]/div/div[2]/div/div/span/input[1]")).Click();
+                        //Add the Skill
+                        Driver.driver.FindElement(By.XPath("//input[@name='name']")).SendKeys(s);
 
+                        //Select Skill Level
+                        SelectElement skillLevelselect = new SelectElement(Driver.driver.FindElement(By.XPath("//select[@class='ui fluid dropdown']")));
+                        skillLevelselect.SelectByValue(skillLevel[i]);
+
+                        //Click on Add button
+                        Driver.driver.FindElement(By.XPath("//input[@class='ui teal button ']")).Click();
+                    }
+
+                }
+            }
             
-        }
+            }
         
-        [Then(@"that skill should be displayed on my listings")]
-        public void ThenThatSkillShouldBeDisplayedOnMyListings()
+        [Then(@"skill should be displayed on my listings")]
+        public void ThenSkillShouldBeDisplayedOnMyListings()
         {
             try
             {
                 //Start the Reports
                 CommonMethods.ExtentReports();
                 Thread.Sleep(1000);
-                CommonMethods.test = CommonMethods.extent.StartTest("Add a Language");
+                CommonMethods.test = CommonMethods.extent.StartTest("Add a skill");
 
                 Thread.Sleep(1000);
                 string ExpectedValue = "C#";
@@ -73,9 +92,7 @@ namespace SpecflowTests.AcceptanceTest
             {
                 CommonMethods.test.Log(LogStatus.Fail, "Test Failed", e.Message);
             }
-
-
-
         }
+
     }
 }

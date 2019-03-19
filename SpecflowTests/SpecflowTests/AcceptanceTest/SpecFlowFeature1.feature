@@ -7,7 +7,20 @@
 Scenario: Check if user could able to add a language 
 	Given I clicked on the Language tab under Profile page
 	When I add a new language
-	Then that language should be displayed on my listings
+	Then language should be displayed on my listings
+
+Scenario Outline: Check if user could able to add few languages at once
+	Given I clicked on the Language tab under profile page
+	When i add <language> and <level>
+	Then that <language> should be displayed on my listings
+	Examples: 
+	| language | level            |
+	| French   | Fluent           |
+	| German   | Basic            |
+	| Hindi    | Conversational   |
+	| Sinhala  | Native/Bilingual |
+	| English  | Basic            |
+
 
 Scenario: Check if user could able to delete a language
 	Given I added a Language under profile page
@@ -17,12 +30,22 @@ Scenario: Check if user could able to delete a language
 Scenario: Check if user could able to add a skill 
 	Given I clicked on the Skills tab under Profile page
 	When I add a new skill
-	Then that skill should be displayed on my listings
+	Then skill should be displayed on my listings
+
+Scenario: Check if user able to add few skills
+    When I add few skills
+	Then All added skills should be displayed on my listings
+
+
 	
 Scenario: Check if user could able to delete a skill
 	Given I added a skill under profile page
 	When I click on delete button on that skill
 	Then Message should be displayed and skill should be removed from my listings
+
+Scenario: Check if user could able to delete one given skill out of set of skills
+	When I click on delete button of given skill
+	Then Given skill should be removed from the list and other should be displayed on my listings. 
 
 Scenario: Check if user could able to add a Education 
 	Given I clicked on the Education tab under Profile page
@@ -63,3 +86,5 @@ Scenario: Check if user could able to add Earn Target
 	Given I clicked on the earn target tab under Profile page
 	When I select target from drop down list
 	Then that target should be displayed in profile
+
+

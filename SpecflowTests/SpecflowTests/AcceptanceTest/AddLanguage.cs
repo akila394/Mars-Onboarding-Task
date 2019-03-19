@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using RelevantCodes.ExtentReports;
 using SpecflowPages;
 using System;
@@ -26,26 +27,27 @@ namespace SpecflowTests.AcceptanceTest
         [When(@"I add a new language")]
         public void WhenIAddANewLanguage()
         {
-            //Click on Add New button
-            Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div")).Click();
+            
+                Thread.Sleep(300);
+                //Click on Add New button
+                Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div")).Click();
 
-            //Add Language
-            Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[1]/input")).SendKeys("English");
+                //Add Language
+                Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[1]/input")).SendKeys("English");
 
-            //Click on Language Level
-            Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select")).Click();
+                //Select Skill Level
+                SelectElement skillLevel = new SelectElement(Driver.driver.FindElement(By.XPath("//select[@class='ui dropdown']")));
+                skillLevel.SelectByValue("Conversational");
 
-            //Choose the language level
-            IWebElement Lang = Driver.driver.FindElements(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option"))[1];
-            Lang.Click();
-
-            //Click on Add button
-            Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[1]")).Click();
+                //Click on Add button
+                Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[1]")).Click();
+            
 
         }
 
-        [Then(@"that language should be displayed on my listings")]
-        public void ThenThatLanguageShouldBeDisplayedOnMyListings()
+      
+        [Then(@"language should be displayed on my listings")]
+        public void ThenLanguageShouldBeDisplayedOnMyListings()
         {
             try
             {
@@ -58,7 +60,7 @@ namespace SpecflowTests.AcceptanceTest
                 string ExpectedValue = "English";
                 string ActualValue = Driver.driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody/tr/td[1]")).Text;
                 Thread.Sleep(500);
-                if(ExpectedValue == ActualValue)
+                if (ExpectedValue == ActualValue)
                 {
                     CommonMethods.test.Log(LogStatus.Pass, "Test Passed, Added a Language Successfully");
                     SaveScreenShotClass.SaveScreenshot(Driver.driver, "LanguageAdded");
@@ -68,13 +70,14 @@ namespace SpecflowTests.AcceptanceTest
                     CommonMethods.test.Log(LogStatus.Fail, "Test Failed");
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                CommonMethods.test.Log(LogStatus.Fail, "Test Failed",e.Message);
+                CommonMethods.test.Log(LogStatus.Fail, "Test Failed", e.Message);
             }
 
-             
 
         }
+    
+
     }
 }

@@ -57,6 +57,5 @@ C:\Users\dell\Desktop\DESKTOP_AKILA\MVP studio\Mars onboarding\SpecflowTests-Bas
 C:\Users\dell\Desktop\DESKTOP_AKILA\MVP studio\Mars onboarding\SpecflowTests-Base\SpecflowTests-Base\SpecflowTests\SpecflowPages\bin\Debug\WebDriver.Support.dll
 C:\Users\dell\Desktop\DESKTOP_AKILA\MVP studio\Mars onboarding\SpecflowTests-Base\SpecflowTests-Base\SpecflowTests\SpecflowPages\bin\Debug\WebDriver.xml
 C:\Users\dell\Desktop\DESKTOP_AKILA\MVP studio\Mars onboarding\SpecflowTests-Base\SpecflowTests-Base\SpecflowTests\SpecflowPages\bin\Debug\WebDriver.Support.xml
-C:\Users\dell\Desktop\DESKTOP_AKILA\MVP studio\Mars onboarding\SpecflowTests-Base\SpecflowTests-Base\SpecflowTests\SpecflowPages\obj\Debug\SpecflowPages.csprojResolveAssemblyReference.cache
 C:\Users\dell\Desktop\DESKTOP_AKILA\MVP studio\Mars onboarding\SpecflowTests-Base\SpecflowTests-Base\SpecflowTests\SpecflowPages\obj\Debug\SpecflowPages.dll
 C:\Users\dell\Desktop\DESKTOP_AKILA\MVP studio\Mars onboarding\SpecflowTests-Base\SpecflowTests-Base\SpecflowTests\SpecflowPages\obj\Debug\SpecflowPages.pdb
