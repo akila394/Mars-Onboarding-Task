@@ -87,4 +87,8 @@ Scenario: Check if user could able to add Earn Target
 	When I select target from drop down list
 	Then that target should be displayed in profile
 
+Scenario: Check if user could able to add profile name
+	Given I clicked on profile name under profile page
+	When I add a First Name and Last Name then click save button
+	Then That profile name should be displayed in profile
 

@@ -413,6 +413,24 @@ this.ScenarioSetup(scenarioInfo);
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Check if user could able to add profile name")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "SpecFlowFeature1")]
+        public virtual void CheckIfUserCouldAbleToAddProfileName()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check if user could able to add profile name", ((string[])(null)));
+#line 90
+this.ScenarioSetup(scenarioInfo);
+#line 91
+ testRunner.Given("I clicked on profile name under profile page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 92
+ testRunner.When("I add a First Name and Last Name then click save button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 93
+ testRunner.Then("That profile name should be displayed in profile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
